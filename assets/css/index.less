@@ -1,0 +1,94 @@
+@padding: 10px;
+@lineHieght: 38px;
+.row-flex {
+    display: flex;
+    flex-direction: row;
+}
+.column-flex {
+    display: flex;
+    flex-direction: column;
+}
+html {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+#header {
+	padding: @padding;
+}
+.data-box {
+	padding: @padding;
+}
+.btn-group {
+	position: relative;
+	display: inline-block;
+	margin-right: @padding;
+}
+.flex-box {
+	.row-flex();
+}
+.drop-down-table {
+	position: absolute;
+	display: none;
+	width: 80px;
+	padding: 4px 0;
+	background-color: #fff;
+	border: 1px solid grey;
+	z-index: 999;
+}
+.drop-down-table a {
+	display: block;
+	padding: 2px @padding;
+}
+.member-box {
+	padding: @padding;
+	max-height: 300px;
+	.row {
+		margin-bottom: @padding;
+		.input-group {
+			.row-flex();
+		}
+	}
+	.layui-layer-btn1 {
+		background-color: #009688;
+	}
+
+}
+.item-box,
+.table-box {
+	width: 300px;
+	padding: @padding;
+	.layui-form-item {
+		display: flex;
+	}
+	.layui-form-label {
+		width: 65px;
+		min-width: 65px;
+		i {
+			color: red;
+		}
+	}
+	.layui-input-block {
+		margin-left: 0;
+		flex-grow: 1;
+	}
+	.old-title {
+		line-height: @lineHieght;
+		margin-left: @padding;
+	}
+}
+
+.title-box {
+	.layui-form-label {
+		width: auto;
+	}
+	.select-box {
+		display: flex;
+	}
+	.layui-unselect.layui-form-select{
+		max-width: 180px;
+	}
+	.table-date {
+		line-height: @lineHieght;
+		margin-left: @padding;
+	}
+}

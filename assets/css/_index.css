@@ -1,0 +1,155 @@
+.row-flex {
+  display: flex;
+  flex-direction: row;
+}
+.column-flex {
+  display: flex;
+  flex-direction: column;
+}
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+#header {
+  padding: 10px;
+}
+.data-box {
+  padding: 10px;
+}
+.btn-group {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+.flex-box {
+  display: flex;
+  flex-direction: row;
+}
+.drop-down-table {
+  position: absolute;
+  display: none;
+  width: 80px;
+  padding: 4px 0;
+  background-color: #fff;
+  border: 1px solid grey;
+  z-index: 999;
+}
+.drop-down-table a {
+  display: block;
+  padding: 4px 10px;
+}
+.member-box {
+  padding: 10px;
+  max-height: 300px;
+}
+.member-box .row {
+  margin-bottom: 10px;
+}
+.member-box .row .input-group {
+  display: flex;
+  flex-direction: row;
+}
+.member-box .layui-layer-btn1 {
+  background-color: #009688;
+}
+.item-box,
+.table-box {
+  width: 300px;
+  padding: 10px;
+}
+.item-box .layui-form-item,
+.table-box .layui-form-item {
+  display: flex;
+}
+.item-box .layui-form-label,
+.table-box .layui-form-label {
+  width: 65px;
+  min-width: 65px;
+}
+.item-box .layui-form-label i,
+.table-box .layui-form-label i {
+  color: red;
+}
+.item-box .layui-input-block,
+.table-box .layui-input-block {
+  margin-left: 0;
+  flex-grow: 1;
+}
+.item-box .old-title,
+.table-box .old-title {
+  line-height: 38px;
+  margin-left: 10px;
+}
+.title-box .layui-form-label {
+  width: auto;
+}
+.title-box .select-box {
+  display: flex;
+}
+.title-box .layui-unselect.layui-form-select {
+  max-width: 180px;
+}
+.title-box .table-date {
+  line-height: 38px;
+  margin-left: 10px;
+}
+
+
+/* calculator*/
+.cal-box {
+  margin-top: 10px;
+}
+.grid-box {
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  grid-template-rows: repeat(4, 50px);
+  place-items: center;
+}
+.grid-box .item {
+  width: 100%;
+  height: 100%;
+  line-height: 50px;
+  place-self: center;
+  text-align: center;
+  background-color: rgba(0,0,0,.1);
+  border-radius: 25px;
+}
+.grid-box .item-0 {
+  grid-column-start: span 1;
+}
+.grid-box .pcs {
+  height: 15px;
+  text-align: right;
+  grid-column-start: span 4;
+}
+.grid-box .result {
+  grid-column-start: span 4;
+  text-align: right;
+}
+.screen .pcs,
+.screen .result {
+  padding: 0 10px;
+  text-align: right;
+}
+.screen .pcs {
+  /*height: 30px;*/
+  line-height: 15px;
+  color: grey;
+}
+.screen .result {
+  height: 50px;
+  line-height: 50px;
+}
+.screen .box {
+  display: flex;
+  flex-direction: column;
+}
+
+[v-cloak] {
+  display: none !important;
+}
+.member-box,
+.table-box,
+.item-box {
+  display: none;
+}

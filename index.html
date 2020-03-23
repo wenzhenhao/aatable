@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>AA表格</title>
+  <link rel="stylesheet" href="assets/libs/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="assets/css/index.css" media="all">
+  <!-- <script src="assets/libs/jquery/jquery.min.js"></script> -->
+  <script src="assets/libs/layui/layui.js"></script>
+  <script src="assets/libs/vue/vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="main">
+      <div id="header">
+        <div class="flex-box">
+          <div class="btn-group">
+            <button type="button" class="layui-btn" @click="showNewMember">成员</button> 
+            </div>
+          <div class="btn-group">
+            <button type="button" class="layui-btn has-dropdown">表格</button> 
+            <div class="drop-down-table">
+              <a href="#" @click="showNewTable(0)">新表格</a>
+              <a href="#" @click="showNewTable(1)">编辑表格</a>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="layui-btn has-dropdown">项目</button> 
+            <div class="drop-down-table">
+              <a href="#" @click="showNewItem(0)">新项目</a>
+              <a href="#" @click="showNewItem(1)">编辑项目</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="content">
+        <div v-if="allTable.length" class="title-box layui-form">
+          <div class="select-box">
+            <label for="" class="layui-form-label">表格</label>
+            <select name="curTableIdx" lay-verify="required" lay-filter="curTable" v-model="curTableIdx">
+              <option v-cloak v-for="item, index in allTable" :value="index">{{item.title}}</option>
+            </select>  
+            <span v-cloak class="table-date">{{curTable.date}}</span>
+          </div>
+        </div>
+        <div class="data-box">
+          <table :id="tableId" lay-filter="mytable" lay-size="sm"></table>
+        </div>
+      </div>
+      <div id="footer"></div>
+ 
+    </div>
+    <new-member :member=tmpMember></new-member>
+    <new-table :isedit=isEditTable :table=tmpTable :member=member :oldtitle=oldTableTitle></new-table>
+    <new-item :table=curTable :curitem=tmpItem :idx=curItemIdx :isedit=isEditItem @send-result="getResult" ref="tableItem"></new-item>
+  </div>
+</body>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/v_base.js"></script>
+<script src="assets/js/v_index.js"></script>
+<script src="assets/js/componet.js"></script>
+
+</html>
+
