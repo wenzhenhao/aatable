@@ -40,11 +40,6 @@ var app = new Vue({
                 _self.renderAfterVue();
             }); 
             _self.renderAfterVue();
-
-            window.addEventListener("orientationchange", function() {
-                // Announce the new orientation number
-                alert(window.orientation);
-                }, false)
             
         },
         clickControl: function(e){
