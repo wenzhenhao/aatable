@@ -251,6 +251,10 @@ var app = new Vue({
                         if(table == ''){
                             table = [];
                         }
+                        if($(form).find("input[type=checkbox]:checked").length == 0){
+                            layer.msg('请选择至少一名成员');
+                                return false;
+                        }
                         _self.tmpTable.title = _self.tmpTable.title.trim();
                         if(type == 0){
                             if(table.some((v, i) => v.title == _self.tmpTable.title)){
@@ -439,6 +443,10 @@ var app = new Vue({
 
                     _self.form.on('submit(newItem)', function(data){
                         var form = data.form;
+                        if($(form).find("input[type=checkbox]:checked").length == 0){
+                            layer.msg('请选择至少一名成员');
+                                return false;
+                        }
                         if(type == 0){
                             if(_self.curTable.items.some((v, i) => v.title == _self.tmpItem.title)){
                                 layer.msg('已有同名项目');
