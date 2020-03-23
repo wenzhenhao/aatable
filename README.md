@@ -1,1 +1,1 @@
-[AA表格](https://www.example.com)
+[AA表格](https://wenzhenhao.github.io/aatable/index.html)
