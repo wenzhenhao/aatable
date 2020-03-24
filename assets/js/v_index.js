@@ -74,8 +74,8 @@ var app = new Vue({
                 ,page: false //开启分页
                 ,cols: [cols]
                 ,data: data
-                ,toolbar: true
-                ,defaultToolbar: ['exports']
+                ,toolbar: false
+                // ,defaultToolbar: ['exports']
                 ,title: title
             });
         },
@@ -585,6 +585,40 @@ var app = new Vue({
             var _self = this;
             _self.tmpItem.cost = val;
         },
+        outputCSV: function(){
+            var _self = this;
+            if(_self.curTable.title == ''){
+                layer.msg('请先选择表格');
+            }   
+            var prefix = "data:text/csv;charset=utf-8,\\ufeff";
+            var suffix = '.csv';
+            var str = '';   // csv data
+            var nextRow = "\n"; // 换行符
+            // 表格信息
+            str += "表格:," + _self.curTable.title + nextRow;
+            str += "日期:," + _self.curTable.date + nextRow;
+            // 表头
+            for(let v of _self.curTable.cols){
+                str += v.title + ','
+            }
+            str = str.substr(0, str.length - 1) + nextRow;
+            str += nextRow;
+            // data
+            for(let v of _self.curTable.list){
+                for(let vv of v){
+                    str += vv + ','
+                }
+                str = str.substr(0, str.length - 1) + nextRow;
+            }
+            var url = prefix + str;
+
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = _self.curTable.title + '_' + _self.curTable.date.replace(/\-/g, '') + suffix;
+            document.body.append(a);
+            a.click();
+            a.remove();
+        }
 
     },
     computed: {
