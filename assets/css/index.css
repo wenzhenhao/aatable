@@ -104,6 +104,7 @@ html {
   grid-template-columns: repeat(4, 50px);
   grid-template-rows: repeat(4, 50px);
   place-items: center;
+  grid-gap: 1px;
 }
 .grid-box .item {
   width: 100%;
@@ -112,7 +113,13 @@ html {
   place-self: center;
   text-align: center;
   background-color: rgba(0,0,0,.1);
-  border-radius: 25px;
+  /* border-radius: 25px; */
+}
+.grid-box .item:hover,
+.grid-box .item:active {
+  background-color: orange;
+  color: white;
+  cursor: pointer;
 }
 .grid-box .item-0 {
   grid-column-start: span 1;

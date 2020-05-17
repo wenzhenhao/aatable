@@ -581,7 +581,7 @@ var app = new Vue({
             }
         },
         getResult: function(val){
-            console.log('getResult', val)
+            // console.log('getResult', val)
             var _self = this;
             _self.tmpItem.cost = val;
         },
@@ -590,36 +590,41 @@ var app = new Vue({
             if(_self.curTable.title == ''){
                 layer.msg('请先选择表格');
             }   
-            var prefix = "data:text/csv;charset=utf-8,\\ufeff";
-            var suffix = '.csv';
+            const BOM = '\uFEFF'; 
+            var filename = _self.curTable.title + '.csv';
             var str = '';   // csv data
             var nextRow = "\n"; // 换行符
+            var separator = ',';
             // 表格信息
             str += "表格:," + _self.curTable.title + nextRow;
             str += "日期:," + _self.curTable.date + nextRow;
             // 表头
             for(let v of _self.curTable.cols){
-                str += v.title + ','
+                str += v.title + separator;
             }
             str = str.substr(0, str.length - 1) + nextRow;
             str += nextRow;
             // data
             for(let v of _self.curTable.list){
                 for(let vv of v){
-                    str += vv + ','
+                    str += vv + separator;
                 }
                 str = str.substr(0, str.length - 1) + nextRow;
             }
-            var url = prefix + str;
-
-            var a = document.createElement('a');
-            a.href = url;
-            a.download = _self.curTable.title + '_' + _self.curTable.date.replace(/\-/g, '') + suffix;
-            document.body.append(a);
-            a.click();
-            a.remove();
-        }
-
+            const csv = str;
+            if (navigator.msSaveOrOpenBlob) {
+                let blob = new Blob([BOM + csv], { type: 'text/csv;charset=utf-8;' });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                let uri = encodeURI(`data:text/csv;charset=utf-8,${BOM}${csv}`);
+                let downloadLink = document.createElement('a');
+                downloadLink.href = uri;
+                downloadLink.download = filename;
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            }
+        },
     },
     computed: {
         realItemIdx: function(){
